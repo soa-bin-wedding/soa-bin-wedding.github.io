@@ -1293,3 +1293,90 @@ ul, ol {
   padding: 4px;
   text-align:center;
 }
+.massage_box {
+  padding: 0px 70px 0px 70px;
+  background: none;
+}
+
+.massage_box li {
+  border-bottom: 1px solid #e4dee0;
+  color: #e6eff3;
+  border-top: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.massage_box li input {
+  border: none !important;
+  background: none !important;
+  color: #000;
+  box-sizing: border-box;
+  padding-left: 5px;
+  width: 50%;
+}
+
+.massage_box li span.tt {
+  color: #9b5e33;
+  letter-spacing: 0.3px;
+  top: auto;
+}
+
+.massage_list {
+  display: none;
+  width: 84%;
+  margin: auto 0;
+  /*display: inline-block;*/
+  padding: e 10px;
+  margin-top: 15px;
+  background: #f4f3f1;
+  font-size: 12px;
+  border-radius: 0px;
+  text-align: left;
+  position: relative;
+}
+
+.massage_list > name {
+  padding-left: 0px;
+  font-weight: bold;
+  color: #555;
+  padding: 10px 0 10px 0;
+}
+
+.massage_list .txt {
+  letter-spacing: 0.1px;
+  color: #777;
+  min-height: 20px;
+  position: relative;
+  padding: 10px 0 10px 0;
+}
+
+
+.massage_list .time {
+  letter-spacing: 0.1px;
+  color: #777;
+  top: 15px;
+  position: absolute;
+  right: 10px;
+  padding-left: 13px;
+}
+.wrap-loading{ /*화면 전체를 어둡게 합니다.*/
+  position: fixed;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  background: rgba(0,0,0,0.2); /*not in ie */
+  filter: progid:DXImageTransform.Microsoft.Gradient(startColorstr='#20000000', endColorstr='#20000000');    /* ie */
+  display: none;
+  z-index: 9999;
+}
+
+.wrap-loading div{ /*로딩 이미지*/
+  position: fixed;
+  top:50%;
+  left:50%;
+  margin-left: -21px;
+  margin-top: -21px;
+}
+
+

@@ -79,6 +79,9 @@
 </div>
 <div id="fh5co-main">
     <div class="fh5co-overlay-mobile"></div>
+    <div class="wrap-loading">
+        <div><img src="images/loader.gif" /></div>
+    </div>
     <div id="fh5co-home" class="js-fullheight" data-section="home">
         <div class="flexslider">
             <div class="fh5co-overlay"></div>
@@ -225,8 +228,19 @@
                                 <img src="http://mcard.barunnfamily.com/resources/skin/w_skin_img65/tit_guest_book.png"
                                      style="width: 37%;"/>
                             </h2>
-                            <div id="daumRoughmapContainer1608715483841"
-                                 class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                            <div class="massage_box">
+                                <ul class="massage">
+                                    <li>
+                                        <span class="tt">Name</span>:<input type="text" class="jtxtoff" id="name" name="name" maxlength="10">
+                                    </li>
+                                    <li>
+                                        <span class="tt">Message</span>:<input type="text" class="" id="msg" name="msg" maxlength="300">
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="btn_write"><a href="javascript:doPost();" id="cmtWrite"><span>축하메시지 남기기</span></a></p>
+                            <div id="guestList"></div><br>
+                            <span id="moreBtn" onclick="getMore()">더보기</span>
                         </div>
                     </div>
                 </div>
@@ -237,7 +251,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center section-heading">
-                    <ul class="sns_a animate-box" style="font-size: 0px;background-color: #999">
+                    <!--<ul class="sns_a animate-box" style="font-size: 0px;background-color: #999">
                         <li><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fjh-sh-wedding.github.io"
                                target="_blank"><img
                                 src="http://mcard.barunnfamily.com/resources/img_inc/btn_facebook.png" alt="페이스북"></a>
@@ -252,7 +266,7 @@
                         <li><a href="javascript:shareStory();"><img
                                 src="http://mcard.barunnfamily.com/resources/img_inc/btn_story.png" alt="카카오스토리"></a>
                         </li>
-                    </ul>
+                    </ul>-->
 
                     <script type='text/javascript'>
                         //<![CDATA[

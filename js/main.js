@@ -311,8 +311,6 @@
 
 
 	};
-
-
 	// Document on load.
 	$(function(){
 		new daum.roughmap.Lander({
@@ -333,14 +331,9 @@
 		clickMenu();
 		navigationSection();
 		goToTop();
-
-
-
 		// Animations
 		contentWayPoint();
-
-
-
+		doGet();
 	});
 
 
@@ -352,4 +345,122 @@ function shareStory() {
 		url: 'https://jh-sh-wedding.github.io',
 		text: '모바일 초대장 연결~! #바른손카드 #모바일초대장 :)'
 	});
+}
+
+
+function doGet(){
+	$.ajax({
+		url: "https://script.google.com/macros/s/AKfycbx1UIlMYlDH7j5boXjA4trdA6QlWtyOzFCj10dlnEqJmZGvVVQOH7DEWQ/exec",
+		type: "GET",
+		beforeSend:function(){
+			$('.wrap-loading').show();
+		},
+		success: function (data) {
+			if(data.result = '"success"'){
+				data.list.reverse();
+				$(data.list).each(function(i,v){
+					$('#guestList').append('<div dis="true" class="massage_list">\n' +
+						'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
+						'                                <div class="txt">\n' +
+						'                                    <span>'+v[1]+'</span>\n' +
+						'                                </div>\n' +
+						'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
+						'                            </div>');
+				})
+				$('.massage_list').each(function (i,v) {
+					if(i<5){
+						$(v).attr('dis',false);
+						$(v).fadeIn(1000);
+					}
+				})
+				if($('.massage_list[dis=true]').length == 0){
+					$('#moreBtn').text('');
+				}else{
+					$('#moreBtn').text('더보기');
+				}
+			}
+		},
+		complete: function(){
+			$('.wrap-loading').hide();
+		}
+	});
+};
+
+function doPost() {
+	$.ajax({
+		url: "https://script.google.com/macros/s/AKfycbx1UIlMYlDH7j5boXjA4trdA6QlWtyOzFCj10dlnEqJmZGvVVQOH7DEWQ/exec",
+		data: {name: $('#name').val(), msg: $('#msg').val()},
+		type: "POST",
+		beforeSend:function(){
+			$('.wrap-loading').show();
+		},
+		success: function (data) {
+			if(data.result = '"success"'){
+				alert("축하의 글 감사합니다. 행복하게 살겠습니다.");
+				$('#guestList').empty();
+				data.list.reverse();
+				$(data.list).each(function(i,v){
+					$('#guestList').append('<div dis="true" class="massage_list">\n' +
+						'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
+						'                                <div class="txt">\n' +
+						'                                    <span>'+v[1]+'</span>\n' +
+						'                                </div>\n' +
+						'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
+						'                            </div>');
+				})
+				$('.massage_list').each(function (i,v) {
+					if(i<5){
+						$(v).attr('dis',false);
+						$(v).fadeIn(1000);
+					}
+				})
+				if($('.massage_list[dis=true]').length == 0){
+					$('#moreBtn').text('');
+				}else{
+					$('#moreBtn').text('더보기');
+				}
+				$('#name').val('');$('#msg').val('');
+			}
+		},
+		complete: function(){
+			$('.wrap-loading').hide();
+		}
+	});
+}
+
+function getMore(){
+	$('.massage_list[dis=true]').each(function(i,d){
+		if(i<5){
+			$(d).attr('dis',false);
+			$(d).fadeIn(1000);
+		}
+	});
+	if($('.massage_list[dis=true]').length == 0){
+		$('#moreBtn').text('');
+	}
+}
+
+function getTimeStamp(str) {
+	var d = new Date(str);
+	var s =
+		leadingZeros(d.getFullYear(), 4) + '-' +
+		leadingZeros(d.getMonth() + 1, 2) + '-' +
+		leadingZeros(d.getDate(), 2) + ' ' +
+
+		leadingZeros(d.getHours(), 2) + ':' +
+		leadingZeros(d.getMinutes(), 2) + ':' +
+		leadingZeros(d.getSeconds(), 2);
+
+	return s;
+}
+
+function leadingZeros(n, digits) {
+	var zero = '';
+	n = n.toString();
+
+	if (n.length < digits) {
+		for (i = 0; i < digits - n.length; i++)
+			zero += '0';
+	}
+	return zero + n;
 }
