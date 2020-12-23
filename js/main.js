@@ -353,7 +353,6 @@ function doGet(){
 		url: "https://script.google.com/macros/s/AKfycbx1UIlMYlDH7j5boXjA4trdA6QlWtyOzFCj10dlnEqJmZGvVVQOH7DEWQ/exec",
 		type: "GET",
 		beforeSend:function(){
-			$('.wrap-loading').show();
 		},
 		success: function (data) {
 			if(data.result == "success"){
@@ -383,7 +382,6 @@ function doGet(){
 			}
 		},
 		complete: function(){
-			$('.wrap-loading').hide();
 		}
 	});
 };
