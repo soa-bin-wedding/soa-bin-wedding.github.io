@@ -357,26 +357,28 @@ function doGet(){
 		},
 		success: function (data) {
 			if(data.result = '"success"'){
-				data.list.reverse();
-				$(data.list).each(function(i,v){
-					$('#guestList').append('<div dis="true" class="massage_list">\n' +
-						'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
-						'                                <div class="txt">\n' +
-						'                                    <span>'+v[1]+'</span>\n' +
-						'                                </div>\n' +
-						'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
-						'                            </div>');
-				})
-				$('.massage_list').each(function (i,v) {
-					if(i<5){
-						$(v).attr('dis',false);
-						$(v).fadeIn(1000);
+				if(data.list.length>0){
+					data.list.reverse();
+					$(data.list).each(function(i,v){
+						$('#guestList').append('<div dis="true" class="massage_list">\n' +
+							'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
+							'                                <div class="txt">\n' +
+							'                                    <span>'+v[1]+'</span>\n' +
+							'                                </div>\n' +
+							'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
+							'                            </div>');
+					})
+					$('.massage_list').each(function (i,v) {
+						if(i<5){
+							$(v).attr('dis',false);
+							$(v).fadeIn(1000);
+						}
+					})
+					if($('.massage_list[dis=true]').length == 0){
+						$('#moreBtn').text('');
+					}else{
+						$('#moreBtn').text('더보기');
 					}
-				})
-				if($('.massage_list[dis=true]').length == 0){
-					$('#moreBtn').text('');
-				}else{
-					$('#moreBtn').text('더보기');
 				}
 			}
 		},
@@ -398,28 +400,31 @@ function doPost() {
 			if(data.result = '"success"'){
 				alert("축하의 글 감사합니다. 행복하게 살겠습니다.");
 				$('#guestList').empty();
-				data.list.reverse();
-				$(data.list).each(function(i,v){
-					$('#guestList').append('<div dis="true" class="massage_list">\n' +
-						'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
-						'                                <div class="txt">\n' +
-						'                                    <span>'+v[1]+'</span>\n' +
-						'                                </div>\n' +
-						'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
-						'                            </div>');
-				})
-				$('.massage_list').each(function (i,v) {
-					if(i<5){
-						$(v).attr('dis',false);
-						$(v).fadeIn(1000);
+				if(data.list.length>0){
+					data.list.reverse();
+					$(data.list).each(function(i,v){
+						$('#guestList').append('<div dis="true" class="massage_list">\n' +
+							'                                <span class="name"><b>'+v[0]+'</b></span>\n' +
+							'                                <div class="txt">\n' +
+							'                                    <span>'+v[1]+'</span>\n' +
+							'                                </div>\n' +
+							'                                <span class="time">'+getTimeStamp(v[2])+'</span>\n' +
+							'                            </div>');
+					})
+					$('.massage_list').each(function (i,v) {
+						if(i<5){
+							$(v).attr('dis',false);
+							$(v).fadeIn(1000);
+						}
+					})
+					if($('.massage_list[dis=true]').length == 0){
+						$('#moreBtn').text('');
+					}else{
+						$('#moreBtn').text('더보기');
 					}
-				})
-				if($('.massage_list[dis=true]').length == 0){
-					$('#moreBtn').text('');
-				}else{
-					$('#moreBtn').text('더보기');
+					$('#name').val('');$('#msg').val('');
 				}
-				$('#name').val('');$('#msg').val('');
+
 			}
 		},
 		complete: function(){
