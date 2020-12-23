@@ -19,9 +19,9 @@
 	var fullHeight = function() {
 		if ( !isiPad() && !isiPhone() ) {
 			$('.js-fullheight').css('height', $(window).height());
-			$(window).resize(function(){
+			/*$(window).resize(function(){
 				$('.js-fullheight').css('height', $(window).height());
-			})
+			})*/
 		}
 	};
 
@@ -34,9 +34,9 @@
 
 	  	$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
 
-	  	$(window).resize(function(){
+	  	/*$(window).resize(function(){
 	  		$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
-	  	});
+	  	});*/
 
 	  	$('.js-fh5co-next').on('click', function(event){
 
