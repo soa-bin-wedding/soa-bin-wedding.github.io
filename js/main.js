@@ -356,7 +356,7 @@ function doGet(){
 			$('.wrap-loading').show();
 		},
 		success: function (data) {
-			if(data.result = '"success"'){
+			if(data.result == "success"){
 				if(data.list.length>0){
 					data.list.reverse();
 					$(data.list).each(function(i,v){
@@ -397,7 +397,7 @@ function doPost() {
 			$('.wrap-loading').show();
 		},
 		success: function (data) {
-			if(data.result = '"success"'){
+			if(data.result == "success"){
 				alert("축하의 글 감사합니다. 행복하게 살겠습니다.");
 				$('#guestList').empty();
 				if(data.list.length>0){
