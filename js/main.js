@@ -16,47 +16,11 @@
 	    );
 	};
 
-	var fullHeight = function() {
-		if ( !isiPad() && !isiPhone() ) {
-			$('.js-fullheight').css('height', $(window).height());
-			/*$(window).resize(function(){
-				$('.js-fullheight').css('height', $(window).height());
-			})*/
-		}
-	};
-
-	var sliderMain = function() {
-
-	  	$('#fh5co-home .flexslider').flexslider({
-			animation: "fade",
-			slideshowSpeed: 5000
-	  	});
-
-	  	$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
-
-	  	/*$(window).resize(function(){
-	  		$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
-	  	});*/
-
-	  	$('.js-fh5co-next').on('click', function(event){
-
-	  		event.preventDefault();
-	  		$('html, body').animate({
-				scrollTop: $(this).closest('#fh5co-home').next().offset().top
-			}, 800, 'easeOutExpo');
-	  		
-	  	});
-
-	};
-
 	var offcanvasMenu = function() {
 
-		$('body').prepend('<div id="fh5co-offcanvas" />');
-		$('#fh5co-offcanvas').append($('#fh5co-main-nav').clone());
-
+		
 		setTimeout(function(){
-			$('#fh5co-offcanvas').prepend('<a href="#" class="js-fh5co-offcanvas-close fh5co-offcanvas-close" />');
-			$('#fh5co-offcanvas #fh5co-main-nav').attr('id', '');
+			
 		}, 200);
 		
 	};
@@ -73,9 +37,7 @@
 		var $section = $('.fh5co-main-nav');
 		
 		$section.waypoint(function(direction) {
-		  	
 		  	if (direction === 'down') {
-
 			    	$section.css({
 			    		'position' : 'fixed',
 			    		'top' : 0,
@@ -126,44 +88,16 @@
 		});
 
 	};
-	
-	// Parallax
-	var parallax = function() {
-		$(window).stellar();
-	};
-
-
-	// Redirect page 
-	var redirectPage = function(url) {
-		window.location = url;
-	}
-
-	var pageTransition = function() {
-		$("body").css("display", "none");
-		$("body").fadeIn(2000);
-		$("a.transition").click(function(event){
-		  	event.preventDefault();
-		  	var linkLocation = this.href;
-		  	$("body").fadeOut(2000, redirectPage);
-		  	redirectPage(linkLocation);
-		});
-			
-	};
 
 
 	// Burger Menu
 	var burgerMenu = function() {
-
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
-
 			var $this = $(this);
-
 			$('body').toggleClass('fh5co-overflow offcanvas-visible');
 			$this.toggleClass('active');
 			event.preventDefault();
-
 		});
-
 	};
 
 	var scrolledWindow = function() {
@@ -311,36 +245,39 @@
 
 
 	};
-	// Document on load.
+	
 	$(function(){
-		pageTransition();
-		fullHeight();
-		sliderMain();
-		offcanvasMenu();
-		mainMenuSticky();
+		if ( !isiPad() && !isiPhone() ) {
+			$('.js-fullheight').css('height', $(window).height());
+		}
+		$('#fh5co-home .flexslider').flexslider({
+			animation: "fade"
+		});
+		$('#fh5co-home .flexslider .slides > li').css('height', $(window).height());
+		$('.js-fh5co-next').on('click', function(event){
+			event.preventDefault();
+			$('html, body').animate({
+				scrollTop: $(this).closest('#fh5co-home').next().offset().top
+			}, 800, 'easeOutExpo');
+
+		});
+
+		$('body').prepend('<div id="fh5co-offcanvas" />');
+		$('#fh5co-offcanvas').append($('#fh5co-main-nav').clone());
+		$('#fh5co-offcanvas').prepend('<a href="#" class="js-fh5co-offcanvas-close fh5co-offcanvas-close" />');
+		$('#fh5co-offcanvas #fh5co-main-nav').attr('id', '');
+		/*mainMenuSticky();*/
 		mobileMenuOutsideClick();
-		parallax();
+		$(window).stellar();
 		burgerMenu();
 		scrolledWindow();
 		clickMenu();
 		navigationSection();
 		goToTop();
-		// Animations
 		contentWayPoint();
 		doGet();
 	});
-
-
 }());
-
-function shareStory() {
-
-	Kakao.Story.open({
-		url: 'https://jh-sh-wedding.github.io',
-		text: '모바일 초대장 연결~! #바른손카드 #모바일초대장 :)'
-	});
-}
-
 
 function doGet(){
 	$.ajax({
@@ -367,11 +304,11 @@ function doGet(){
 							$(v).fadeIn(1000);
 						}
 					})
-					if($('.massage_list[dis=true]').length == 0){
-						$('#moreBtn').text('');
-					}else{
-						$('#moreBtn').text('더보기');
-					}
+				}
+				if($('.massage_list[dis=true]').length == 0){
+					$('#moreBtn').text('');
+				}else{
+					$('#moreBtn').text('더보기');
 				}
 			}
 		},
@@ -409,14 +346,13 @@ function doPost() {
 							$(v).fadeIn(1000);
 						}
 					})
-					if($('.massage_list[dis=true]').length == 0){
-						$('#moreBtn').text('');
-					}else{
-						$('#moreBtn').text('더보기');
-					}
-					$('#name').val('');$('#msg').val('');
 				}
-
+				if($('.massage_list[dis=true]').length == 0){
+					$('#moreBtn').text('');
+				}else{
+					$('#moreBtn').text('더보기');
+				}
+				$('#name').val('');$('#msg').val('');
 			}
 		},
 		complete: function(){
