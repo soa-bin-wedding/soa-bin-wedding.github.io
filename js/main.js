@@ -313,12 +313,6 @@
 	};
 	// Document on load.
 	$(function(){
-		new daum.roughmap.Lander({
-			"timestamp" : "1608715483841",
-			"key" : "23mci",
-			"mapWidth" : "360",
-			"mapHeight" : "240"
-		}).render();
 		pageTransition();
 		fullHeight();
 		sliderMain();
