@@ -467,3 +467,14 @@ function leadingZeros(n, digits) {
 	}
 	return zero + n;
 }
+
+function gaClick(eventName, data) {
+	try {
+		gtag('event', 'click', {
+			'event_category': eventName,
+			'event_label': data,
+		});
+	} catch { }
+
+	return true;
+}
