@@ -398,10 +398,9 @@ function leadingZeros(n, digits) {
 	return zero + n;
 }
 
-function copy_to_clipboard(event) {
-	var copyText = event.target.parentNode.previousElementSibling;
+function copy_to_clipboard(id) {
+	var copyText = document.getElementById(id);
 	copyText.select();
-	copyText.setSelectionRange(0, 99999);
 	document.execCommand("Copy");
-	alert('복사되었습니다');
+	alert('복사되었습니다 ' + copyText.value);
 }
